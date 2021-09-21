@@ -1,0 +1,11 @@
+{
+  "name": "@boxts/core",
+  "version": "1.0.0-alpha.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "rollup -wc",
+    "build": "rollup -c"
+  }
+}
