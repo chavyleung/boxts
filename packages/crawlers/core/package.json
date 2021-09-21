@@ -1,0 +1,22 @@
+{
+  "name": "@boxts/crawler",
+  "version": "1.0.0-alpha.21",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "jable": "./bin/jable.js",
+    "sukebei": "./bin/sukebei.js"
+  },
+  "scripts": {
+    "dev": "rollup -wc",
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "numeral": "^2.0.6",
+    "playwright": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/numeral": "^2.0.2"
+  }
+}
