@@ -1,0 +1,18 @@
+{
+  "name": "@boxts/jable",
+  "version": "1.0.0-alpha.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "rollup -wc",
+    "build": "rollup -c",
+    "test": "jest --detectOpenHandles"
+  },
+  "devDependencies": {
+    "playwright": "^1.15.0"
+  },
+  "peerDependencies": {
+    "playwright": "^1.14.1"
+  }
+}
