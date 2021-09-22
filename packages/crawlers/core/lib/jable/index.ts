@@ -100,7 +100,7 @@ program
     jable /categories/uncensored/ -m -l
     jable /tags/creampie/ -m -l
 
-    more: https://www.npmjs.com/package/@boxts/crawler
+    more: https://github.com/chavyleung/boxts/blob/main/packages/crawlers/core/README.md
     `
   )
   .action(async (path: Apis) => {
