@@ -17,7 +17,7 @@ export const sort = (magnets: Magnet[], opts: Opts) => {
 
   if (sorted.length < 1) {
     sorted = sortMagnets(magnets, {
-      sort: 'downloads',
+      sort: 'size',
       minSize: 0,
       maxSize: 10
     })

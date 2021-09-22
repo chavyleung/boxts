@@ -4271,7 +4271,7 @@ const sort = (magnets, opts) => {
 
   if (sorted.length < 1) {
     sorted = sortMagnets_1(magnets, {
-      sort: 'downloads',
+      sort: 'size',
       minSize: 0,
       maxSize: 10
     });
