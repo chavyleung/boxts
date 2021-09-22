@@ -4258,11 +4258,15 @@ dist.SUKEBEI = SUKEBEI;
 var getMagnets_1 = dist.getMagnets = getMagnets;
 var sortMagnets_1 = dist.sortMagnets = sortMagnets;
 
-const sort = magnets => {
+const sort = (magnets, opts) => {
+  const {
+    minSize,
+    maxSize
+  } = opts;
   let sorted = sortMagnets_1(magnets, {
     sort: 'downloads',
-    minSize: 5,
-    maxSize: 10
+    minSize: minSize ?? 3,
+    maxSize: maxSize ?? 10
   });
 
   if (sorted.length < 1) {
@@ -4275,13 +4279,13 @@ const sort = magnets => {
 
   return sorted;
 };
-const withMagent = async videos => {
+const withMagent = async (videos, opts) => {
   for (let i = 0; i < videos.length; i++) {
     var _video$magnets;
 
     const video = videos[i];
     const magnets = await getMagnets_1(video.code);
-    video.magnets = sort(magnets);
+    video.magnets = sort(magnets, opts);
     const bestMagnet = (_video$magnets = video.magnets) === null || _video$magnets === void 0 ? void 0 : _video$magnets[0];
     if (!bestMagnet) continue;
     const size = numeral(bestMagnet.size).format('0,0.00');
@@ -4333,7 +4337,7 @@ const handle = async (path, opts) => {
   }
 
   if (isGetMagnet) {
-    await withMagent(videos);
+    await withMagent(videos, opts);
   } else {
     console.info(getOutputs(videos));
   }
@@ -4341,10 +4345,11 @@ const handle = async (path, opts) => {
   return videos;
 };
 const program = new commander.exports.Command();
-program.name('jable').description('npm i -g @boxts/crawler').argument('[path]', 'get videos from path.', v => v, '/hot/').option('-p, --page <page>', 'get videos from page.', p => parseInt(p), 1).option('-m, --magnet [magnet]', 'get video magnet.', false).option('-l, --latest [latest]', 'get latest videos.', false).helpOption('-h, --help', `
+program.name('jable').description('npm i -g @boxts/crawler').argument('[path]', 'get videos from path.', v => v, '/hot/').option('-p, --page <page>', 'get videos from page.', p => parseInt(p), 1).option('-min, --minSize <minSize>', 'min-size GB', v => parseInt(v), 3).option('-max, --maxSize <maxSize>', 'max-size GB', v => parseInt(v), 10).option('-m, --magnet [magnet]', 'get video magnet.', false).option('-l, --latest [latest]', 'get latest videos.', false).helpOption('-h, --help', `
     jable /tags/creampie/ -m
     jable /tags/creampie/ -l
     jable /tags/creampis/ -p 2
+    jable /tags/creampis/ -min 3 -max 10
 
     jable /hot/ -m -l
     jable /latest-updates/ -m -l

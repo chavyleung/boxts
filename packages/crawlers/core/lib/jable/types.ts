@@ -4,6 +4,8 @@ import { Magnet } from '@boxts/sukebei'
 export type Opts = {
   path: Apis
   page: number
+  minSize: number
+  maxSize: number
   magnet: boolean
   latest: boolean
 }

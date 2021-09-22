@@ -7,11 +7,12 @@ import { getMagnets, Magnet, sortMagnets } from '@boxts/sukebei'
 
 import { Opts } from './types'
 
-export const sort = (magnets: Magnet[]) => {
+export const sort = (magnets: Magnet[], opts: Opts) => {
+  const { minSize, maxSize } = opts
   let sorted = sortMagnets(magnets, {
     sort: 'downloads',
-    minSize: 5,
-    maxSize: 10
+    minSize: minSize ?? 3,
+    maxSize: maxSize ?? 10
   })
 
   if (sorted.length < 1) {
@@ -24,11 +25,11 @@ export const sort = (magnets: Magnet[]) => {
   return sorted
 }
 
-export const withMagent = async (videos: Video[]) => {
+export const withMagent = async (videos: Video[], opts: Opts) => {
   for (let i = 0; i < videos.length; i++) {
     const video = videos[i]
     const magnets = await getMagnets(video.code)
-    video.magnets = sort(magnets)
+    video.magnets = sort(magnets, opts)
 
     const bestMagnet = video.magnets?.[0]
     if (!bestMagnet) continue
@@ -72,7 +73,7 @@ export const handle = async (path: Apis, opts: Opts) => {
   }
 
   if (isGetMagnet) {
-    await withMagent(videos)
+    await withMagent(videos, opts)
   } else {
     console.info(getOutputs(videos))
   }
@@ -85,6 +86,8 @@ program
   .description('npm i -g @boxts/crawler')
   .argument('[path]', 'get videos from path.', (v) => v, '/hot/')
   .option('-p, --page <page>', 'get videos from page.', (p) => parseInt(p), 1)
+  .option('-min, --minSize <minSize>', 'min-size GB', (v) => parseInt(v), 3)
+  .option('-max, --maxSize <maxSize>', 'max-size GB', (v) => parseInt(v), 10)
   .option('-m, --magnet [magnet]', 'get video magnet.', false)
   .option('-l, --latest [latest]', 'get latest videos.', false)
   .helpOption(
@@ -93,6 +96,7 @@ program
     jable /tags/creampie/ -m
     jable /tags/creampie/ -l
     jable /tags/creampis/ -p 2
+    jable /tags/creampis/ -min 3 -max 10
 
     jable /hot/ -m -l
     jable /latest-updates/ -m -l
