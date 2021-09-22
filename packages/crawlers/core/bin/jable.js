@@ -4357,7 +4357,7 @@ program.name('jable').description('npm i -g @boxts/crawler').argument('[path]', 
     jable /categories/uncensored/ -m -l
     jable /tags/creampie/ -m -l
 
-    for t in {5..5}; do jable /categories/uncensored/ -m -p $t;done
+    for t in {1..5}; do jable /categories/uncensored/ -m -p $t; sleep 5; done
 
     more: https://github.com/chavyleung/boxts/blob/main/packages/crawlers/core/README.md
     `).action(async path => {
