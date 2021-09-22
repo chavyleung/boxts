@@ -15,7 +15,7 @@ jable -m
 jable -h
 ```
 
-<image src="https://github.com/chavyleung/boxts/blob/main/packages/crawlers/core/assets/jable/cmd.gif" />
+<image src="https://raw.githubusercontent.com/chavyleung/boxts/main/packages/crawlers/core/assets/jable/cmd.gif" />
 
 ## Sukebei
 
