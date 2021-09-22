@@ -4345,7 +4345,7 @@ const handle = async (path, opts) => {
   return videos;
 };
 const program = new commander.exports.Command();
-program.name('jable').description('npm i -g @boxts/crawler').argument('[path]', 'get videos from path.', v => v, '/hot/').option('-p, --page <page>', 'get videos from page.', p => parseInt(p), 1).option('-min, --minSize <minSize>', 'min-size GB', v => parseInt(v), 3).option('-max, --maxSize <maxSize>', 'max-size GB', v => parseInt(v), 10).option('-m, --magnet [magnet]', 'get video magnet.', false).option('-l, --latest [latest]', 'get latest videos.', false).helpOption('-h, --help', `
+program.name('jable').description('npm i -g @boxts/crawler').argument('[path]', 'get videos from path.', v => v, '/hot/').option('-p, --page [page]', 'get videos from page.', p => parseInt(p), 1).option('-min, --minSize [minSize]', 'min-size GB', v => parseInt(v), 3).option('-max, --maxSize [maxSize]', 'max-size GB', v => parseInt(v), 10).option('-m, --magnet [magnet]', 'get video magnet.', false).option('-l, --latest [latest]', 'get latest videos.', false).helpOption('-h, --help', `
     jable /tags/creampie/ -m
     jable /tags/creampie/ -l
     jable /tags/creampis/ -p 2
