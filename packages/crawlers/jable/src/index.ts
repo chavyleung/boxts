@@ -42,7 +42,7 @@ const parser = (elements: (SVGElement | HTMLElement)[]) => {
 
   elements.forEach((el) => {
     const url = el.getAttribute('href')
-    const name = el.textContent?.trim()
+    const name = el.textContent?.trim().replace('[廣告] ', '')
 
     if (!url || !name) return
     const [code] = name.split(' ')

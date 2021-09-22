@@ -4113,7 +4113,7 @@ const parser$1 = elements => {
     var _el$textContent;
 
     const url = el.getAttribute('href');
-    const name = (_el$textContent = el.textContent) === null || _el$textContent === void 0 ? void 0 : _el$textContent.trim();
+    const name = (_el$textContent = el.textContent) === null || _el$textContent === void 0 ? void 0 : _el$textContent.trim().replace('[廣告] ', '');
     if (!url || !name) return;
     const [code] = name.split(' ');
     vidoes.push({
