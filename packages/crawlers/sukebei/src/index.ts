@@ -2,44 +2,55 @@ import { ElementHandle } from 'playwright'
 
 import { usePlaywright } from '@boxts/crawler'
 
-import { Magnet, SortMagnets, SortOptions } from './types'
+import { GetMagnets, Magnet, Options, SortMagnets, WrapOptions } from './types'
 
 export const SUKEBEI = 'https://sukebei.nyaa.si/'
 
-export const getMagnets = async (key: string) => {
+export const getMagnets: GetMagnets = async (key, ...opts) => {
+  const options = wrapOptions(...opts)
   const sukebei = await usePlaywright()
   const sukebeiPage = await sukebei.newPage()
 
-  const url = `${SUKEBEI}?f=0&c=0_0&q=${key}&s=size&o=desc`
+  const { sort, page } = options
+  const _sort = sort ? `&s=${sort}` : ''
+  const url = `${SUKEBEI}?f=0&c=2_2&q=${key}${_sort}&o=desc&p=${page}`
   await sukebeiPage.goto(url)
 
-  const elements = await sukebeiPage.$$('table.torrent-list tbody tr.default')
+  const elements = await sukebeiPage.$$('table.torrent-list tbody tr')
   const magnets = await parser(elements)
 
   await sukebeiPage.close()
   return magnets
 }
 
-export const sortMagnets: SortMagnets = (magnets, opts) => {
-  const defaultOptions: SortOptions = {
-    sort: 'size',
+export const wrapOptions: WrapOptions = (...opts) => {
+  const defaultOptions: Options = {
+    page: 1,
     minSize: 2,
     maxSize: 0,
     minDownload: 0,
     maxDownload: 0
   }
-  const options: SortOptions = Object.assign(defaultOptions, opts)
+  return Object.assign(defaultOptions, ...opts)
+}
+
+export const sortMagnets: SortMagnets = (magnets, ...opts) => {
+  const options = wrapOptions(...opts)
 
   const { sort, minSize, maxSize, minDownload, maxDownload } = options
-  return magnets
-    .filter((m) => {
-      const minS = minSize ? m.size > minSize : true
-      const maxS = maxSize ? m.size < maxSize : true
-      const minD = minDownload ? m.downloads > minDownload : true
-      const maxD = maxDownload ? m.downloads < maxDownload : true
-      return minS && maxS && minD && maxD
-    })
-    .sort((a, b) => b[sort] - a[sort])
+  let sorted = magnets.filter((m) => {
+    const minS = minSize ? m.size > minSize : true
+    const maxS = maxSize ? m.size < maxSize : true
+    const minD = minDownload ? m.downloads > minDownload : true
+    const maxD = maxDownload ? m.downloads < maxDownload : true
+    return minS && maxS && minD && maxD
+  })
+
+  if (sort) {
+    sorted = sorted.sort((a, b) => b[sort] - a[sort])
+  }
+
+  return sorted
 }
 
 const parser = async (elements: ElementHandle<SVGElement | HTMLElement>[]) => {
@@ -52,9 +63,10 @@ const parser = async (elements: ElementHandle<SVGElement | HTMLElement>[]) => {
     const name = await nameParser(element)
     const size = await sizeParser(element)
     const downloads = await dlParser(element)
+    const leechers = await lcParser(element)
 
     if (!url) continue
-    magnets.push({ url, name, size, downloads })
+    magnets.push({ url, name, size, downloads, leechers })
   }
 
   return magnets
@@ -93,6 +105,11 @@ const sizeParser = async (element: ElementHandle<SVGElement | HTMLElement>) => {
 const dlParser = async (element: ElementHandle<SVGElement | HTMLElement>) => {
   const $downloads = await element.$eval('td >> nth=-1', textParser)
   return Number($downloads) ?? 0
+}
+
+const lcParser = async (element: ElementHandle<SVGElement | HTMLElement>) => {
+  const $leechers = await element.$eval('td >> nth=6', textParser)
+  return Number($leechers) ?? 0
 }
 
 export * from './types'
