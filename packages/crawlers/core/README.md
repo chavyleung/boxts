@@ -1,10 +1,41 @@
 # @boxts/crawler
 
-## Quickstart
+## Installation
+
+**macOS or Windows**
 
 ```bash
 npm i -g @boxts/crawler
+```
 
+**Ubuntu 20.04**
+
+[About install additional dependencies (Playwright)](https://playwright.dev/docs/library#linux)
+
+```bash
+npx playwright install-deps
+npm i -g @boxts/crawler
+```
+
+**Ubuntu 21.04**
+
+[About install the missing packages](https://github.com/microsoft/playwright/issues/4236#issuecomment-855282593)
+
+```bash
+cd ~/Downloads
+wget http://mirrors.kernel.org/ubuntu/pool/main/i/icu/libicu66_66.1-2ubuntu2_amd64.deb
+wget http://mirrors.kernel.org/ubuntu/pool/universe/e/enchant/libenchant1c2a_1.6.0-11.3build1_amd64.deb
+
+sudo dpkg -i libicu66_66.1-2ubuntu2_amd64.deb
+sudo dpkg -i libenchant1c2a_1.6.0-11.3build1_amd64.deb
+
+npx playwright install-deps
+npm i -g @boxts/crawler
+```
+
+## Quickstart
+
+```bash
 # search magnets
 sukebei ssni-647
 
