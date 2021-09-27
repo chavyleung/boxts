@@ -11,8 +11,5 @@
   },
   "devDependencies": {
     "playwright": "^1.15.0"
-  },
-  "peerDependencies": {
-    "playwright": "^1.14.1"
   }
 }
