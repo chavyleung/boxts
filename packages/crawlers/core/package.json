@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "bin": {
     "jable": "./bin/jable.js",
+    "sehuatang": "./bin/sehuatang.js",
     "sukebei": "./bin/sukebei.js"
   },
   "scripts": {
