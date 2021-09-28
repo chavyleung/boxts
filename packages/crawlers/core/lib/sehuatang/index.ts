@@ -42,7 +42,7 @@ program
     console.info(`🔔 ${url} 🔔`)
 
     const videos = await getVideos(path, options)
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < videos.length; i++) {
       const video = videos[i]
       video.magnet = await getMagnet(video.url)
       console.info(video.magnet)
