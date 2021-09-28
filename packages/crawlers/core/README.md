@@ -55,6 +55,17 @@ jable -h
 sukebei ssni-647
 ```
 
+## Sehuatang
+
+```bash
+# search magnets
+sehuatang /forum-103
+sehuatang /forum-103 -p 2
+
+# pagination
+for t in {1..5}; do sehuatang /forum-103 -p $t; sleep 5; done
+```
+
 ## Jable
 
 ```bash
@@ -66,6 +77,11 @@ jable -m
 
 # list latest videos
 jable -l
+
+# pagination
+jable -p 2
+
+for t in {1..5}; do jable /categories/uncensored/ -m -p $t; sleep 5; done
 
 # all paths
 jable /hot/

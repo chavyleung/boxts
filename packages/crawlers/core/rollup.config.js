@@ -89,6 +89,31 @@ export default () => {
           preferBuiltins: true
         })
       ]
+    },
+    {
+      external: ['playwright'],
+      input: './lib/sehuatang/index.ts',
+      output: [
+        {
+          banner: '#!/usr/bin/env node',
+          exports: 'named',
+          file: './bin/sehuatang.js',
+          format: 'cjs'
+        }
+      ],
+      plugins: [
+        babel({
+          babelHelpers: 'bundled',
+          extensions: ['.js', '.ts'],
+          rootMode: 'upward'
+        }),
+        commonjs(),
+        json(),
+        nodeResolve({
+          extensions: ['.js', '.ts'],
+          preferBuiltins: true
+        })
+      ]
     }
   ])
 }
