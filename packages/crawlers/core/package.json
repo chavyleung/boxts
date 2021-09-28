@@ -9,6 +9,10 @@
     "sehuatang": "./bin/sehuatang.js",
     "sukebei": "./bin/sukebei.js"
   },
+  "files": [
+    "bin",
+    "dist"
+  ],
   "scripts": {
     "dev": "rollup -wc",
     "build": "rollup -c"
