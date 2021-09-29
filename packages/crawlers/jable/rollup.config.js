@@ -1,5 +1,6 @@
 import { defineConfig } from 'rollup'
 import dts from 'rollup-plugin-dts'
+import { terser } from 'rollup-plugin-terser'
 
 import { babel } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
@@ -15,7 +16,8 @@ export default () => {
         {
           exports: 'named',
           file: './dist/index.js',
-          format: 'cjs'
+          format: 'es',
+          sourcemap: true
         }
       ],
       plugins: [
@@ -29,7 +31,8 @@ export default () => {
         nodeResolve({
           extensions: ['.js', '.ts'],
           preferBuiltins: true
-        })
+        }),
+        terser()
       ]
     },
     {
