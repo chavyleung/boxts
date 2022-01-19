@@ -44,7 +44,7 @@ export default defineConfig([
       },
       {
         exports: 'named',
-        file: '/Users/chavy/Library/Mobile Documents/iCloud~com~nssurge~inc/Documents/scripts/surge-proxy-panel.js',
+        file: '~/Library/Mobile Documents/iCloud~com~nssurge~inc/Documents/scripts/surge-proxy-panel.js',
         format: 'cjs',
         name: 'SurgeProxyPanel',
         sourcemap: false
