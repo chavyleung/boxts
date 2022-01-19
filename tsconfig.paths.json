@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@boxts/crawler-magnet": ["./packages/crawlers/magnet/src"],
+      "@boxts/core": ["./packages/boxjs/core/src"],
+      "@boxts/env": ["./packages/boxjs/env/src"],
+      "@boxts/script-network": ["./packages/boxjs/script-network/src"],
+      "@boxts/script-nextially": ["./packages/boxjs/script-nextially/src"]
+    }
+  }
+}

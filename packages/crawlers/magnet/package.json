@@ -1,0 +1,26 @@
+{
+  "name": "@boxts/crawler-magnet",
+  "version": "2.0.0-alpha.1",
+  "license": "MIT",
+  "module": "./dist/index.js",
+  "bin": {
+    "jable": "./bin/jable.js",
+    "sehuatang": "./bin/sehuatang.js"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -wc",
+    "jable": "jable",
+    "jable: apis": "jable apis",
+    "jable: help": "jable -h",
+    "jable: loop": "for t in {1..5}; do jable -p $t; sleep 5; done",
+    "jable: uncensored": "jable /categories/uncensored/",
+    "sehuatang": "sehuatang",
+    "sehuatang: /forum-36": "sehuatang /forum-36",
+    "sehuatang: help": "sehuatang -h",
+    "sehuatang: loop": "for t in {1..5}; do sehuatang -p $t; sleep 5; done"
+  },
+  "peerDependencies": {
+    "playwright": "^1.17.1"
+  }
+}

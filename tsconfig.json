@@ -2,10 +2,13 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "isolatedModules": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
     "strict": true,
     "target": "ESNext"
   },
-  "include": ["packages/**/src", "packages/**/__tests__", "packages/**/lib"]
+  "extends": "./tsconfig.paths.json",
+  "include": ["packages/**/src", "packages/**/__tests__"]
 }
