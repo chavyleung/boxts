@@ -1,13 +1,14 @@
 {
   "version": "2.0.0-alpha.1",
   "private": true,
+  "type": "module",
   "workspaces": [
     "packages/**"
   ],
   "scripts": {
     "build": "lerna run build",
     "dev": "lerna run dev",
-    "prepare": "husky install"
+    "prepare": "husky install && node ./scripts/index.js init"
   },
   "dependencies": {
     "dayjs": "^1.10.7",
@@ -24,12 +25,14 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.2",
     "@rollup/plugin-typescript": "^8.3.0",
+    "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.0",
     "@types/mathjs": "^9.4.2",
     "@types/node": "^17.0.8",
     "@types/numeral": "^2.0.2",
     "chalk": "^5.0.0",
     "commander": "^8.3.0",
+    "fs-extra": "^10.0.0",
     "husky": "^7.0.4",
     "jest": "^27.4.5",
     "lerna": "^4.0.0",
