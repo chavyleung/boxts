@@ -45,9 +45,10 @@ const _handleT = (context: Context) => {
         app.notify('上网认证系统', `自动认证: ${success ? '成功' : '失败'}!`)
 
       if (resp?.data) {
-        const result: { success: boolean } = JSON.parse(
+        const result: { success: boolean; msg: string } = JSON.parse(
           resp.data.replace(/'/g, '"')
         )
+        result.success = result.msg.includes('已在线') ? true : result.success
         notify(result.success)
       } else {
         notify(false)
