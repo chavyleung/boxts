@@ -1,6 +1,6 @@
 import { Command } from 'commander'
 
-import { init } from './initEnv.js'
+import { init } from './prepare.js'
 
 const program = new Command()
 
