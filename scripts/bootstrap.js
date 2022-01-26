@@ -5,7 +5,7 @@ import { normalizePath } from 'vite'
 
 import { getPackagesSync } from '@lerna/project'
 
-export async function init() {
+export async function bootstrap() {
   await _buildTscPaths()
 }
 

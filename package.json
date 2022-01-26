@@ -9,7 +9,7 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "dev": "lerna run dev",
-    "prepare": "husky install && node ./scripts/index.js init"
+    "prepare": "husky install && node ./scripts/index.js bootstrap"
   },
   "dependencies": {
     "dayjs": "^1.10.7",
