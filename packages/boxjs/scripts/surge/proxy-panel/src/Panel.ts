@@ -50,8 +50,8 @@ const _parseNexitally = (resp: HttpResponse<string>) => {
 
   const title = 'Nexitally'
   const content = [
-    `已用流量: ${usedSize} GB (${totalSize} GB)`,
-    `剩余流量: ${balanceSize} GB (${tfcResetDays} 天)`,
+    `已用流量: ${usedSize} GB | ${totalSize} GB`,
+    `剩余流量: ${balanceSize} GB | ${tfcResetDays} 天`,
     `有效日期: ${expireDate}`,
     `更新时间: ${updateDate}`
   ].join('\n')
