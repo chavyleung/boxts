@@ -10,5 +10,5 @@
     "target": "ESNext"
   },
   "extends": "./tsconfig.paths.json",
-  "include": ["packages/**/src", "packages/**/__tests__"]
+  "include": ["packages/**/src"]
 }
