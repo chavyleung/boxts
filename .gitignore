@@ -1,3 +1,6 @@
+.env
+.next/
+
 bin/
 dist/
 node_modules/

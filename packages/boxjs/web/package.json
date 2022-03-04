@@ -1,0 +1,21 @@
+{
+  "name": "@boxts/web",
+  "version": "2.0.0-alpha.1",
+  "private": "true",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf ./.next && next build",
+    "dev": "next dev",
+    "serve": "next start",
+    "sls: deploy": "npm run build && sls deploy"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.4.2",
+    "@mui/material": "^5.4.3",
+    "next": "^12.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

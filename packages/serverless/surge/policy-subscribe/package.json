@@ -1,0 +1,19 @@
+{
+  "name": "@boxts/surge-policy-subscribe",
+  "version": "2.0.0-alpha.1",
+  "private": "true",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -wc",
+    "serv": "node dist/app.js",
+    "sls: deploy": "npm run build && sls deploy"
+  },
+  "dependencies": {
+    "axios": "^0.26.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.4",
+    "koa": "^2.13.4"
+  }
+}

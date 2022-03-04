@@ -1,0 +1,28 @@
+component: scf
+name: BoxJs
+inputs:
+  src:
+    src: ./
+    exclude:
+      - .env
+      - node_modules
+  type: web
+  name: BoxJs
+  region: ap-hongkong
+  memorySize: 512
+  runtime: Nodejs16.13
+  installDependency: true
+  events:
+    - apigw:
+        parameters:
+          serviceName: boxjs_chavy_dev
+          serviceId: service-9k8x7146
+          protocols:
+            - http
+            - https
+          environment: release
+          endpoints:
+            - path: /
+              apiId: api-dq163fxi
+              apiName: BoxJs
+              method: ANY
